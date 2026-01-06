@@ -208,6 +208,18 @@ ul.task-list input[type="checkbox"] {
       margin: 0;
     }
   }
+
+  .social {
+    .contact-icons {
+      font-size: 2rem;
+
+      a {
+        i::before {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
 }
 
 .profile.float-right {
