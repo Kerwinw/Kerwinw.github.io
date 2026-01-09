@@ -421,6 +421,15 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+// News section
+
+.news {
+  padding: 1.5rem;
+  background-color: #f8f9fa; // 浅灰色背景
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
 // Social (bottom)
 
 .social {
@@ -762,6 +771,11 @@ footer.sticky-bottom {
       margin-bottom: 1rem;
 
       .preview {
+        width: 140px;
+        height: 90px;
+        object-fit: contain; // scale image to fit without cropping
+        display: block;
+        margin-bottom: 0.5rem;
       }
 
       .abbr {
@@ -964,6 +978,22 @@ html.transition *:after {
 
 // Extra Markdown style (post Customization)
 .post {
+  p {
+    text-align: justify !important;
+  }
+
+  article {
+    p {
+      text-align: justify !important;
+    }
+  }
+
+  .clearfix {
+    p {
+      text-align: justify !important;
+    }
+  }
+
   .post-meta {
     color: var(--global-text-color-light);
     font-size: 0.875rem;
