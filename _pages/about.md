@@ -1,40 +1,98 @@
 ---
-
 layout: about
 title: about
 permalink: /
-subtitle: Xidian University | Ph.D. Student in Electronic Science and Technology
+subtitle: Ph.D. Candidate · Electronic Science and Technology, Xidian University
+homepage_design: true
+intro: >-
+  I am a Ph.D. candidate at Xidian University, expected to graduate in December 2026. My research focuses on computer vision and vision-language models, with an emphasis on continual learning and efficient model adaptation. Outside the lab, I enjoy films, music, and connecting with people.
 
 profile:
   align: right
   image: xwang.jpg
   image_circular: false # crops the image to make it circular
-  # more_info: >
-  #   <p>555 your office number</p>
-  #   <p>123 your address street</p>
-  #   <p>Your City, State 12345</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true
+  scrollable: false
+  limit: 3
 
 latest_posts:
   enabled: false
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi there, I'm Kerwin Wang, I'm now a third-year Ph.D. student in Electronic Science and Technology at Xidian University, advised by Prof. Cheng Deng. I received my B.E. degree from the same university in 2021. My research explores the adaptive capabilities of AI, specifically focusing on Incremental Learning, Few-shot Learning, and Model Editing within Computer Vision and Machine Learning. I am passionate about solving complex challenges in these fields, and my research has been published at international conferences such as AAAI, CVPR and NeurIPS.
+<section class="homepage-section" aria-labelledby="research">
+  <div class="homepage-section-heading">
+    <p class="homepage-kicker">What I do</p>
+    <h2 id="research">Research interests</h2>
+  </div>
+  <div class="research-grid">
+    <article class="research-card">
+      <span class="research-number">01</span>
+      <h3>Continual learning</h3>
+      <p>Building models that adapt to new tasks while retaining previously learned knowledge.</p>
+      <span class="research-tag">CVPR · NeurIPS · AAAI</span>
+    </article>
+    <article class="research-card">
+      <span class="research-number research-number-green">02</span>
+      <h3>Vision-language models</h3>
+      <p>Studying robust visual recognition and transfer across vision and language.</p>
+      <span class="research-tag research-tag-green">COMPUTER VISION</span>
+    </article>
+    <article class="research-card">
+      <span class="research-number research-number-lavender">03</span>
+      <h3>Efficient adaptation</h3>
+      <p>Exploring effective ways to adapt models to new data, classes, and settings.</p>
+      <span class="research-tag research-tag-lavender">MACHINE LEARNING</span>
+    </article>
+  </div>
+</section>
 
-Beyond the lab, I am a huge fan of movies and music. I have a strong curiosity for all things new and enjoy connecting with people from diverse backgrounds. You can also get to know me better through my public social media profiles. Whether you are interested in my research or just want to say hi, please feel free to reach out!
+<section class="homepage-section" aria-labelledby="experience">
+  <div class="homepage-section-heading">
+    <p class="homepage-kicker">Journey</p>
+    <h2 id="experience">Experience</h2>
+  </div>
+  <div class="experience-list">
+    <article class="experience-item">
+      <div>
+        <h3>Bosch Corporate Research</h3>
+        <p>Research Intern · Multimodal Algorithms</p>
+      </div>
+      <time datetime="2026-04">Apr 2026 – Present</time>
+    </article>
+    <article class="experience-item">
+      <div>
+        <h3>Frankfurt Institute for Advanced Studies (FIAS)</h3>
+        <p>Visiting Researcher · AI for Science</p>
+      </div>
+      <time datetime="2024-06">Jun 2024 – Aug 2024</time>
+    </article>
+  </div>
+</section>
 
-📧 Email: wangxi6317 [at] gmail [dot] com
-
-<div style="background: #ffe066; color: #222; padding: 12px 18px; border-radius: 8px; font-weight: bold; font-size: 1.1em; margin-bottom: 18px; text-align: center;">
-🚀 <b>Actively seeking internship opportunities for 2026!</b> 🚀<br>
-Feel free to contact me if you have any openings.
-</div>
+<section class="homepage-section" aria-labelledby="education">
+  <div class="homepage-section-heading">
+    <p class="homepage-kicker">Background</p>
+    <h2 id="education">Education</h2>
+  </div>
+  <div class="education-list">
+    <article class="education-item">
+      <div>
+        <h3>Xidian University</h3>
+        <p>Ph.D. in Electronic Science and Technology</p>
+      </div>
+      <time datetime="2021">Sep 2021 – Present · Expected Dec 2026</time>
+    </article>
+    <article class="education-item">
+      <div>
+        <h3>Xidian University</h3>
+        <p>B.Eng. in Electronic Information Engineering</p>
+      </div>
+      <time datetime="2017">Sep 2017 – Jun 2021</time>
+    </article>
+  </div>
+</section>

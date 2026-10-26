@@ -1,81 +1,159 @@
 ---
 layout: default
 ---
-<div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span>{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
+{% if page.homepage_design %}
+  <div class="post homepage">
+    <header class="post-header homepage-header">
+      <p class="homepage-eyebrow">Academic profile</p>
+      <h1 class="post-title">
+        {% if site.title == 'blank' %}
+          <span>{{ site.first_name }}</span> {{ site.middle_name }}
+          {{ site.last_name }}
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </h1>
+      <p class="desc">{{ page.subtitle }}</p>
+    </header>
 
-  <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
+    <article>
+      <section class="homepage-hero" aria-label="Introduction">
+        <div class="homepage-hero-copy">
+          <div class="homepage-intro">{{ page.intro | markdownify }}</div>
+          <nav class="homepage-links" aria-label="Homepage sections">
+            <a href="#research">Research</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#publications">Publications</a>
+          </nav>
+        </div>
+
+        {% if page.profile %}
+          <aside class="homepage-profile">
+            {% if page.profile.image %}
+              {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+              {% if page.profile.image_circular %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+              {% else %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+              {% endif %}
+              {%
+                include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes="(min-width: 768px) 320px, 80vw" alt="Portrait of Kerwin Wang"
+                cache_bust=true
+              %}
+            {% endif %}
+            {% if page.social %}
+              <div class="homepage-social contact-icons">{% include social.liquid %}</div>
+            {% endif %}
+          </aside>
         {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
-        {% if page.social %}
-          <div class="social">
-            <div class="contact-icons">{% include social.liquid %}</div>
+      </section>
+
+      <div class="homepage-content clearfix">{{ content }}</div>
+
+      {% if page.announcements and page.announcements.enabled %}
+        <section class="homepage-section" aria-labelledby="news">
+          <div class="homepage-section-heading">
+            <p class="homepage-kicker">Updates</p>
+            <h2 id="news">
+              <a href="{{ '/news/' | relative_url }}">News</a>
+            </h2>
           </div>
+          {% include news.liquid limit=true %}
+        </section>
+      {% endif %}
+
+      {% if page.selected_papers %}
+        <section class="homepage-section" aria-labelledby="publications">
+          <div class="homepage-section-heading homepage-section-heading-inline">
+            <div>
+              <p class="homepage-kicker">Selected work</p>
+              <h2 id="publications">Selected publications</h2>
+            </div>
+            <a class="homepage-more-link" href="{{ '/publications/' | relative_url }}">All publications <span aria-hidden="true">↗</span></a>
+          </div>
+          {% include selected_papers.liquid %}
+        </section>
+      {% endif %}
+    </article>
+  </div>
+{% else %}
+  <div class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        {% if site.title == 'blank' %}
+          <span>{{ site.first_name }}</span> {{ site.middle_name }}
+          {{ site.last_name }}
+        {% else %}
+          {{ site.title }}
         {% endif %}
-      </div>
-    {% endif %}
+      </h1>
+      <p class="desc">{{ page.subtitle }}</p>
+    </header>
 
-    <div class="clearfix">{{ content }}</div>
+    <article>
+      {% if page.profile %}
+        <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
+          {% if page.profile.image %}
+            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+            {% if page.profile.image_circular %}
+              {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+            {% else %}
+              {% assign profile_image_class = 'img-fluid z-depth-1
+      rounded' %}
+            {% endif %}
+            {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
+      30vw, 95vw"{% endcapture %}
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+              cache_bust=true
+            %}
+          {% endif %}
+          {% if page.profile.more_info %}
+            <div class="more-info">{{ page.profile.more_info }}</div>
+          {% endif %}
+          {% if page.social %}
+            <div class="social">
+              <div class="contact-icons">{% include social.liquid %}</div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
 
-    <!-- News -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=true %}
-    {% endif %}
+      <div class="clearfix">{{ content }}</div>
 
-    <!-- Latest posts -->
-    {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
+      <!-- News -->
+      {% if page.announcements and page.announcements.enabled %}
+        <h2>
+          <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+        </h2>
+        {% include news.liquid limit=true %}
+      {% endif %}
 
-    <!-- Selected papers -->
-    {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
-    {% endif %}
+      <!-- Latest posts -->
+      {% if page.latest_posts and page.latest_posts.enabled %}
+        <h2>
+          <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+        </h2>
+        {% include latest_posts.liquid %}
+      {% endif %}
 
-    <!-- Contact note -->
-    {% if page.social and site.contact_note %}
-      <div class="contact-note">{{ site.contact_note }}</div>
-    {% endif %}
+      <!-- Selected papers -->
+      {% if page.selected_papers %}
+        <h2>
+          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+        </h2>
+        {% include selected_papers.liquid %}
+      {% endif %}
 
-    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-      {% include newsletter.liquid center=true %}
-    {% endif %}
-  </article>
-</div>
+      <!-- Contact note -->
+      {% if page.social and site.contact_note %}
+        <div class="contact-note">{{ site.contact_note }}</div>
+      {% endif %}
+
+      {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
+        {% include newsletter.liquid center=true %}
+      {% endif %}
+    </article>
+  </div>
+{% endif %}
