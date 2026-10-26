@@ -453,11 +453,18 @@ ninja.data = [{
           window.open("https://instagram.com/kerwinw_", "_blank");
         },
       },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/kerwinw", "_blank");
+        },
+      },{
         id: 'social-scholar',
         title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=https://scholar.google.com/citations?user=BRCpUskAAAAJ&hl=zh-CN", "_blank");
+          window.open("https://scholar.google.com/citations?user=BRCpUskAAAAJ", "_blank");
         },
       },{
       id: 'light-theme',
